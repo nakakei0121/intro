@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>座席予約システム画面</title>
+</head>
+<body>
+<h1 th:text=${message}></h1>
+<div class="div1">
+<style>
+div.div1 {
+  background: #ffffff;
+  width: 300px;
+  height : 600px;
+  padding: 10px;
+  text-align: left;
+  float : left;
+  border: 1px solid #cccccc;
+}
+
+div.div2 {
+  background: #ffffff;
+  width: 300px;
+  height : 600px;
+  padding: 10px;
+  text-align: left;
+  float : left;
+  border: 1px solid #cccccc;
+}
+
+div.div3 {
+  clear: both;
+  background: #ffffff;
+  width: 620px;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #cccccc;
+}
+
+div.div4 {
+  background: #ffffff;
+  width: 800px;
+  padding: 10px;
+  text-align: left;
+  text-align:center;
+  position : absolute;
+  top:90px;
+  left:700px;
+  border: 1px solid #cccccc;
+}
+
+</style>
+<h3>拠点</h3>
+<form method="post" action="/">
+<select id="location" name ="location">
+<option th:each="location : ${locations}"
+        th:value="${location.value}"
+        th:text="${location.value}"
+        th:selected="${location.key == locationCd}">
+
+ </select><br>
+<h3>フロア</h3>
+<select id="floor" name ="floor">
+<option th:each="floor : ${floors}"
+        th:value="${floor.value}"
+        th:text="${floor.value}"
+        th:selected="${floor.key == floorCd}">
+ </select><br>
+<h3>エリア</h3>
+ <select id="area" name ="area">
+<option th:each="area : ${areas}"
+        th:value="${area.value}"
+        th:text="${area.value}"
+        th:selected="${area.key == areaCd}">
+</option>
+ </select>
+ </div>
+
+<div class="div2">
+<h4>予約情報入力</h4>
+<input type="submit" value="クリア" id="button1" style="position: relative; left: 100px; bottom: 0px"/>
+    <p>利用者氏名<p>
+        <input type="text" name="name"></p>
+    <p>業遂区分<br>
+        <input type="text" name="name"></p>
+    <p>利用部署<br>
+        <input type="text" name="name"></p>
+    <p>所属部署<br>
+        <input type="text" name="name"></p>
+    <p>連絡先<br>
+        <input type="text" name="name"></p>
+
+ </div>
+
+
+<div class="div3">
+<h4>予約一覧</h4>
+<input type="submit" value="検索" id="button2" style="position: relative; left: 300px; bottom: 30px">
+</form>
+
+<table border="1" style="border-collapse: collapse">
+    <tr>
+        <th>エリア</th>
+        <th>座席属性</th>
+        <th>座席属性</th>
+        <th>予約状況</th>
+    </tr>
+    <tr bgcolor="#00ff00">
+        <td th:text=${area}></td>
+        <td th:text=${floor}></td>
+        <td th:text=${location}></td>
+        <td>予約ボタン</td>
+    </tr>
+    <tr bgcolor="red">
+        <td>A</td>
+        <td>2</td>
+        <td>○○部管理部</td>
+        <td>山田 太郎 予約中</td>
+    </tr>
+    <tr bgcolor="red">
+        <td>B</td>
+        <td>3</td>
+        <td>××部管理部</td>
+        <td>予約取消ボタン</td>
+    </tr>
+    <tr bgcolor="#c0c0c0">
+        <td>B</td>
+        <td>4</td>
+        <td>××部管理部</td>
+        <td>予約不可</td>
+    </tr>
+</table>
+
+</div>
+
+<div class=div4>
+<img src="/Users/dojo/Desktop/seatimage.PNG"   width= 800px;
+  height = 800px;>
+</div>
+</body>
+</html>
